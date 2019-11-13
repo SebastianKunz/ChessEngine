@@ -9,7 +9,7 @@ FLAGS = -Wall -Wextra -fsanitize=address -g
 SRC_DIR = ./src/
 
 SRC = main.cpp GameBoard.cpp FigureLoader.cpp AFigure.cpp \
-	Pawn.cpp Rook.cpp Bishop.cpp King.cpp Queen.cpp
+	Pawn.cpp Rook.cpp Bishop.cpp King.cpp Queen.cpp Knight.cpp
 
 ###################################### OBJECTS #################################
 

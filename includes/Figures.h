@@ -5,4 +5,5 @@
 #include "Figures/Bishop.h"
 #include "Figures/King.h"
 #include "Figures/Queen.h"
+#include "Figures/Knight.h"
 

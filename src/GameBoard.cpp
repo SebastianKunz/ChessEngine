@@ -39,6 +39,10 @@ GameBoard::GameBoard(SDL_Renderer *renderer) : _renderer(renderer), _highlighted
 			{
 				_board[y][x] = new Queen(y, x, color, _loader);
 			}
+			if ((y == 0 || y == 7) && (x == 1 || x == 6))
+			{
+				_board[y][x] = new Knight(y, x, color, _loader);
+			}
 
 
 			if ((x == 0 || x == 7) && (y == 0 || y == 7))
