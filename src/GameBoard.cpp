@@ -3,6 +3,7 @@
 #include "Figures/Pawn.h"
 #include "Figures/Rook.h"
 #include "Figures/Bishop.h"
+#include "Figures/King.h"
 
 GameBoard::GameBoard(SDL_Renderer *renderer) : _renderer(renderer), _highlightedTile({-1, -1})
 {
@@ -12,6 +13,8 @@ GameBoard::GameBoard(SDL_Renderer *renderer) : _renderer(renderer), _highlighted
 	_board = nullptr;
 	_board = new AFigure**[8];
 	char color = 1;
+
+	// make this from a static array or so, seems cleaner
 	for (int y = 0; y < 8; y++)
 	{
 		_board[y] = new AFigure*[8];
@@ -30,6 +33,12 @@ GameBoard::GameBoard(SDL_Renderer *renderer) : _renderer(renderer), _highlighted
 			{
 				_board[y][x] = new Bishop(y, x, color, _loader);
 			}
+
+			if ((y == 0 || y == 7) && x == 4)
+			{
+				_board[y][x] = new King(y, x, color, _loader);
+			}
+
 
 			if ((x == 0 || x == 7) && (y == 0 || y == 7))
 				_board[y][x] = new Rook(y, x, color, _loader);

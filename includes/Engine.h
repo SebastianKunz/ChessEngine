@@ -6,8 +6,6 @@
 #include <iostream>
 #include <vector>
 
-# define DEBUG_C (x) {std::cout << x << std::endl}
-
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 800
 
