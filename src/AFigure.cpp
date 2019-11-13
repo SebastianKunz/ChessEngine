@@ -18,7 +18,7 @@ Figure AFigure::getId() const
 
 bool AFigure::moveTo(const int y, const int x, AFigure ***board)
 {
-	if (!GameBoard::isInBounds(y, x))
+	if (!GameBoard::isInBounds(y, x) || (this->y == y && this->x == x))
 		return false;
 	if (canMoveTo(y, x, board))
 		move(y, x, board);
@@ -26,6 +26,7 @@ bool AFigure::moveTo(const int y, const int x, AFigure ***board)
 		return false;
 	return true;
 }
+
 
 void AFigure::move(const int y, const int x, AFigure ***board)
 {

@@ -1,4 +1,5 @@
 #include "Figures/King.h"
+
 King::King(const int y, const int x, const char color, FigureLoader *loader)
 	: AFigure(y, x, color, Figure::KING, loader) {}
 

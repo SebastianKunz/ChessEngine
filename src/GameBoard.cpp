@@ -1,9 +1,6 @@
 #include "Engine.h"
 #include "GameBoard.h"
-#include "Figures/Pawn.h"
-#include "Figures/Rook.h"
-#include "Figures/Bishop.h"
-#include "Figures/King.h"
+#include "Figures.h"
 
 GameBoard::GameBoard(SDL_Renderer *renderer) : _renderer(renderer), _highlightedTile({-1, -1})
 {
@@ -37,6 +34,10 @@ GameBoard::GameBoard(SDL_Renderer *renderer) : _renderer(renderer), _highlighted
 			if ((y == 0 || y == 7) && x == 4)
 			{
 				_board[y][x] = new King(y, x, color, _loader);
+			}
+			if ((y == 0 || y == 7) && x == 3)
+			{
+				_board[y][x] = new Queen(y, x, color, _loader);
 			}
 
 

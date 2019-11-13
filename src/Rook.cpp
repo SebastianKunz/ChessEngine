@@ -45,6 +45,7 @@ bool Rook::canMoveInDir(const bool flip, const int limitY, const int limitX, AFi
 			break ;
 		}
 	}
+	return true;
 }
 
 std::vector<SDL_Point> Rook::getAllPossibleMoves(AFigure ***board)
