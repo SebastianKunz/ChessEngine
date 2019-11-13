@@ -4,17 +4,10 @@
 
 #include "Engine.h"
 
-SDL_Window *g_window;
-SDL_Renderer *g_renderer;
-
-int get_events(SDL_Event *event)
-{
-}
-
 int main()
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-    g_window = SDL_CreateWindow
+	SDL_Init(SDL_INIT_VIDEO);
+    auto window = SDL_CreateWindow
     (
         "Chess", SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
@@ -24,8 +17,8 @@ int main()
     );
 
     // Setup renderer
-    g_renderer =  SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
-	GameBoard board(g_renderer);
+    auto renderer =  SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	GameBoard board(renderer);
 
 	SDL_Event event;
 	char quit = 0;
@@ -90,12 +83,11 @@ int main()
 		board.draw();
 
 		// Render the rect to the screen
-		SDL_RenderPresent(g_renderer);
+		SDL_RenderPresent(renderer);
 	}
-
-	SDL_DestroyRenderer(g_renderer);
-    SDL_DestroyWindow(g_window);
+	SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
     SDL_Quit();
 
-    return EXIT_SUCCESS;
+    return 0;
 }

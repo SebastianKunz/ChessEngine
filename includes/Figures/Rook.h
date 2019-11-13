@@ -13,6 +13,8 @@ class Rook : public AFigure
 
 		std::vector<SDL_Point> getAllPossibleMoves(AFigure ***board) override;
 
+		bool canMoveInDir(const bool flip, const int limitY, const int limitX, AFigure ***board) const;
+
 	private:
 
 };

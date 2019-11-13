@@ -8,78 +8,43 @@ Rook::Rook(const int y, const int x, const char color, FigureLoader *loader)
 
 bool Rook::canMoveTo(const int y, const int x, AFigure ***board)
 {
-	const int moveX = x - this->x;
-	const int absX = abs(moveX);
-	const int moveY = y - this->y;
-	const int absY = abs(moveY);
-	bool ret = true;
+	const int absX = abs(x - this->x);
+	const int absY = abs(y - this->y);
 
 	if (absX == 0 && absY != 0)
-	{
-		if (moveY > 0)
-		{
-			for (int i = 1; i <= absY; i++)
-			{
-				if (board[this->y + i][this->x])
-				{
-					if (board[this->y + i][this->x]->getColor() == color)
-						ret = false;
-					if (i + 1 <= absY)
-						ret = false;
-					break ;
-				}
-			}
-		}
-		else
-		{
-			for (int i = 1; i <= absY; i++)
-			{
-				if (board[this->y - i][this->x])
-				{
-					if (board[this->y - i][this->x]->getColor() == color)
-						ret = false;
-					if (i + 1 <= absY) // check if there desired pos is not yet reached
-						ret = false;
-					break ;
-				}
-			}
-		}
-	}
+		return canMoveInDir(y < this->y, absY, absX, board);
 	else if (absX != 0 && absY == 0)
-	{
-		if (x > this->x)
-		{
-			for (int i = 1; i <= absX; i++)
-			{
-				if (board[this->y][this->x + i])
-				{
-					if (board[this->y][this->x + i]->getColor() == color)
-						ret = false;
-					if (i + 1 <= absX) // check if there desired pos is not yet reached
-						ret = false;
-					break ;
-				}
-			}
-		}
-		else
-		{
-			for (int i = 1; i <= absX; i++)
-			{
-				if (board[this->y][this->x - i])
-				{
-					if (board[this->y][this->x - i]->getColor() == color)
-						ret = false;
-					if (i + 1 <= absX) // check if there desired pos is not yet reached
-						ret = false;
-					break ;
-				}
-			}
-		}
-	}
+		return canMoveInDir(x < this->x, absY, absX, board);
 	else
 		return false;
+	return false;
+}
 
-	return ret;
+bool Rook::canMoveInDir(const bool flip, const int limitY, const int limitX, AFigure ***board) const
+{
+	char dir = flip ? -1 : 1;
+	for (int y = 1; y <= limitY; y++)
+	{
+		if (board[this->y + y * dir][this->x])
+		{
+			if (board[this->y + y * dir][this->x]->getColor() == color)
+				return false;
+			if (y + 1 <= limitY)
+				return false;
+			break ;
+		}
+	}
+	for (int x = 1; x <= limitX; x++)
+	{
+		if (board[this->y][this->x + x * dir])
+		{
+			if (board[this->y][this->x + x * dir]->getColor() == color)
+				return false;
+			if (x + 1 <= limitX)
+				return false;
+			break ;
+		}
+	}
 }
 
 std::vector<SDL_Point> Rook::getAllPossibleMoves(AFigure ***board)

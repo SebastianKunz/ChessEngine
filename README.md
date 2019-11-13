@@ -4,6 +4,8 @@
 
 - White goes first
 
+For some reason I have 5818 bytes in 75 allocation fake leaks
+
 ### GameFlow
 
 1. Try to move figure to x/y

@@ -83,7 +83,7 @@ void GameBoard::draw()
 			const int boardY = y / 100;
 			if (boardX == _highlightedTile.x && boardY == _highlightedTile.y)
 			{
-				SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 100 );
+				SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255 );
 			}
 			else
 			{
@@ -95,7 +95,7 @@ void GameBoard::draw()
 					}
 				}
 				if (isPossibleMove) {
-					SDL_SetRenderDrawColor(_renderer, 200, 200, 200, 100);
+					SDL_SetRenderDrawColor(_renderer, 0, 255, 0, 100);
 				}
 				else
 				{

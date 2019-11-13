@@ -1,4 +1,5 @@
 #include "Figures/AFigure.h"
+#include "GameBoard.h"
 
 AFigure::AFigure(const int _y, const int _x, const char _color, Figure id, FigureLoader *_loader)
 	: figureId(id), y(_y), x(_x), color(_color), loader(_loader)
@@ -17,6 +18,8 @@ Figure AFigure::getId() const
 
 bool AFigure::moveTo(const int y, const int x, AFigure ***board)
 {
+	if (!GameBoard::isInBounds(y, x))
+		return false;
 	if (canMoveTo(y, x, board))
 		move(y, x, board);
 	else
