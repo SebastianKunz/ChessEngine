@@ -3,6 +3,7 @@
 
 #include "AFigure.h"
 
+// Implementation of Bishop Figure
 class Bishop : public AFigure
 {
 	public:
@@ -11,10 +12,9 @@ class Bishop : public AFigure
 
 		bool canMoveTo(const int y, const int x, AFigure ***board) override;
 
-		/*
-			flipY: is the moving direction up or down?
-			flipX: is the moving direction left or right?
-		*/
+		// returns bool if bishop can move in direction
+		// flipY: is the moving direction up or down?
+		// flipX: is the moving direction left or right?
 		bool canMoveInDir(const bool flipY, const bool flipX,
 			const int limitY, const int limitX, AFigure ***board) const;
 

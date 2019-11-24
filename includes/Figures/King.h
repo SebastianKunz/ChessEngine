@@ -1,6 +1,7 @@
 #pragma once
 #include "AFigure.h"
 
+// Implementation of King figure
 class King : public AFigure
 {
 	public:

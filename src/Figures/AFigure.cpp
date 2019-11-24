@@ -2,14 +2,7 @@
 #include "GameBoard.h"
 
 AFigure::AFigure(const int _y, const int _x, const char _color, Figure id, FigureLoader *_loader)
-	: figureId(id), y(_y), x(_x), color(_color), loader(_loader)
-{
-}
-
-AFigure::~AFigure()
-{
-
-}
+	: figureId(id), y(_y), x(_x), color(_color), loader(_loader) {}
 
 Figure AFigure::getId() const
 {
@@ -36,7 +29,7 @@ void AFigure::move(const int y, const int x, AFigure ***board)
 	board[y][x] = this;
 }
 
-char AFigure::getColor()
+char AFigure::getColor() const
 {
 	return color;
 }
@@ -46,7 +39,7 @@ bool AFigure::draw()
 	SDL_Rect dst;
 	dst.h = 100;
 	dst.w = 100;
-	dst.x = this->x * TILE_SIZE_X;
+	dst.x = this->x * TILE_SIZE_X + BOARD_SIDES_PX;
 	dst.y = this->y * TILE_SIZE_Y;
 	return loader->copyFigureToRenderer(figureId, &dst, color);
 }

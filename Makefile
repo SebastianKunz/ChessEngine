@@ -8,8 +8,12 @@ FLAGS = -Wall -Wextra -fsanitize=address -g
 
 SRC_DIR = ./src/
 
+FIGURES_DIR = ./Figures/
+
 SRC = main.cpp GameBoard.cpp FigureLoader.cpp AFigure.cpp \
-	Pawn.cpp Rook.cpp Bishop.cpp King.cpp Queen.cpp Knight.cpp
+	Pawn.cpp Rook.cpp Bishop.cpp \
+	King.cpp Queen.cpp Knight.cpp \
+	UiController.cpp Game.cpp
 
 ###################################### OBJECTS #################################
 
@@ -47,12 +51,16 @@ CLEAN_NAME	= "Cleaned $(NAME) Binary"
 all: obj $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(FLAGS) $^ -lSDL2 -lSDL2main -lSDL2_image -o $@
+	@$(CC) $(FLAGS) $^ -lSDL2 -lSDL2main -lSDL2_image -lSDL2_ttf -o $@
 	@echo "$(COM_COLOR)$(COM_STRING)$(NO_COLOR)"
 
 #OBJECTS
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+	@$(CC) $(FLAGS) $(INC) -g -c $< -o $@
+
+# Build figure object files
+$(OBJ_DIR)%.o: $(SRC_DIR)$(FIGURES_DIR)%.cpp
 	@$(CC) $(FLAGS) $(INC) -g -c $< -o $@
 
 obj:

@@ -20,9 +20,7 @@ bool Pawn::isLegalMove(const int y, const int x, AFigure ***board) const {
 
 	// capture
 	if (board[y][x] && absX == 1 && moveY == 1 && board[y][x]->getColor() != color)
-	{
 		return true;
-	}
 
 	if (moveX != 0 || moveY <= 0)
 		return false;
@@ -35,9 +33,7 @@ bool Pawn::isLegalMove(const int y, const int x, AFigure ***board) const {
 		return false;
 	}
 	else
-	{
 		return moveY == 1 && absX == 0 && !board[y][x];
-	}
 
 	return false;
 }
@@ -48,11 +44,6 @@ bool Pawn::canMoveTo(const int y, const int x, AFigure ***board)
 	_isFirstMove = false;
 
 	return ret;
-}
-
-void Pawn::setFirstMove(bool flag)
-{
-	_isFirstMove = flag;
 }
 
 std::vector<SDL_Point> Pawn::getAllPossibleMoves(AFigure ***board)

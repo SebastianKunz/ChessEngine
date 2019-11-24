@@ -1,6 +1,7 @@
 #pragma once
 #include "AFigure.h"
 
+// Implementation of Queen figure
 class Queen : public AFigure
 {
 	public:

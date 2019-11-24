@@ -1,18 +1,16 @@
 #include "FigureLoader.h"
 
 FigureLoader::FigureLoader(SDL_Renderer *renderer, int spriteW, int spriteH) :
-	_renderer(renderer), _spriteW(spriteW), _spriteH(spriteH)
-{
-}
+	_renderer(renderer), _spriteW(spriteW), _spriteH(spriteH) {}
 
 FigureLoader::~FigureLoader()
 {
 	releaseImage();
 }
 
-bool FigureLoader::loadImage(const char *file)
+bool FigureLoader::loadImage(const char *path)
 {
-	_image = IMG_Load(file);
+	_image = IMG_Load(path);
 	if (!_image)
 		return false;
 	_texture = SDL_CreateTextureFromSurface(_renderer, _image);
@@ -50,10 +48,10 @@ bool FigureLoader::copyFigureToRenderer(Figure figure, SDL_Rect *dstRect, char c
 		srcRect.x = _spriteW * 2;
 		break;
 	case Figure::QUEEN:
-		srcRect.x = _spriteW * 4;
+		srcRect.x = _spriteW * 3;
 		break;
 	case Figure::KING:
-		srcRect.x = _spriteW * 3;
+		srcRect.x = _spriteW * 4;
 		break;
 
 	default:

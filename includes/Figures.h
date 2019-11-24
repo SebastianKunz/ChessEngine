@@ -1,5 +1,7 @@
 #pragma once
 
+// Convenience header to include all figures
+
 #include "Figures/Pawn.h"
 #include "Figures/Rook.h"
 #include "Figures/Bishop.h"

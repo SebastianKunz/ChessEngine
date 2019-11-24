@@ -2,6 +2,7 @@
 
 #include "AFigure.h"
 
+// Implementation of Knight figure
 class Knight : public AFigure
 {
 	public:

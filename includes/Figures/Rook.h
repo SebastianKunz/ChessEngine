@@ -3,6 +3,7 @@
 
 #include "AFigure.h"
 
+// Implementation of Rook figure
 class Rook : public AFigure
 {
 	public:
